@@ -6,8 +6,15 @@ void main() {
   ));
 }
 
-class StarkCard extends StatelessWidget {
+class StarkCard extends StatefulWidget {
   const StarkCard({super.key});
+
+  @override
+  State<StarkCard> createState() => _StarkCardState();
+}
+
+class _StarkCardState extends State<StarkCard> {
+  int levelCount = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +32,30 @@ class StarkCard extends StatelessWidget {
         elevation: 0.5,
       ),
       backgroundColor: Colors.lightGreen[100],
-      body: const Padding(
-        padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Center(
+            const Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage('res/assets/iron.png'),
                 radius: 60,
               ),
             ),
-            Divider(
+            const Divider(
               height: 60,
               color: Colors.red,
             ),
-            Text(
+            const Text(
               'NAME',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2,
               ),
             ),
-            SizedBox(height: 10,),
-            Text(
+            const SizedBox(height: 10,),
+            const Text(
               'Tony Stark',
               style: TextStyle(
                 color: Colors.amber,
@@ -57,26 +64,26 @@ class StarkCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 30,),
-            Text(
+            const SizedBox(height: 30,),
+            const Text(
               'Level',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2,
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
-              '999',
-              style: TextStyle(
+              '$levelCount',
+              style: const TextStyle(
                 color: Colors.amber,
                 letterSpacing: 2,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 30,),
-            Row(
+            const SizedBox(height: 30,),
+            const Row(
               children: <Widget>[
                 Icon(
                   Icons.email,
@@ -98,9 +105,22 @@ class StarkCard extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            levelCount++;
+          });
+          },
+        child: const Icon(
+          Icons.add,
+          color: Colors.red,
+        ),
+      ),
     );
   }
 }
+
+
 
 
 
